@@ -1,0 +1,299 @@
+<html lang="zh-CN"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>关于我们 - YZ Design</title>
+    <!-- Tailwind CSS v3 -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome -->
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#3b82f6'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif']
+                    },
+                    transitionProperty: {
+                        'height': 'height',
+                        'spacing': 'margin, padding'
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .nav-link {
+                @apply relative px-2 py-0 text-sm md:text-lg font-medium transition-colors duration-300 ease-in-out align-bottom;
+            }
+            
+            .nav-link::after {
+                content: '';
+                @apply absolute bottom-[-3px] left-0 w-0 h-[1px] bg-black transition-all duration-300 ease-in-out;
+            }
+            
+            .nav-link:hover::after {
+                @apply w-full;
+            }
+            
+            .nav-link.active::after {
+                @apply w-full;
+            }
+            
+            .section-title {
+                @apply text-2xl md:text-3xl font-light mb-8 tracking-wide;
+            }
+            
+            .service-item {
+                @apply mb-12 last:mb-0;
+            }
+            
+            .service-title {
+                @apply text-xl font-medium mb-3 tracking-wide;
+            }
+            
+            .service-description {
+                @apply text-gray-600 leading-relaxed;
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- 导航栏 -->
+    <nav id="navbar" class="fixed top-0 left-0 right-0 bg-white bg-opacity-100 h-10 z-50 overflow-hidden">
+        <div class="absolute left-0 right-0 px-[0.8vw] flex justify-between items-end h-[14px]" style="bottom: 2px;">
+            <!-- Logo/品牌 -->
+            <div>
+                <a href="index.html" style="display: inline-block;">
+                    <span class="text-xl font-bold text-gray-800" style="line-height: 14px; margin: 0; padding: 0;">YZ Design</span>
+                </a>
+            </div>
+            
+            <!-- 导航链接 -->
+            <div class="flex justify-between w-[60%]">
+                <a href="about.html" class="nav-link active" data-target="about" style="line-height: 14px; font-size: 14px; margin: 0; padding: 0; transform: translateY(-2px);">关于</a>
+                <a href="#" class="nav-link" data-target="services" style="line-height: 14px; font-size: 14px; margin: 0; padding: 0; transform: translateY(-2px);">服务</a>
+                <a href="#" id="navWechatLink" class="nav-link" data-target="contact" style="line-height: 14px; font-size: 14px; margin: 0; padding: 0; transform: translateY(-2px);">
+                    <i class="fa fa-weixin"></i>
+                </a>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- 主要内容 -->
+    <main class="container mx-auto px-[0.8vw] pt-24 pb-16 max-w-4xl">
+        <!-- 页面标题 -->
+        <section class="mb-16">
+            <h1 class="text-4xl md:text-5xl font-light tracking-wide">关于我们</h1>
+            <div class="w-16 h-[1px] bg-black mt-6"></div>
+        </section>
+        
+        <!-- 工作室简介 -->
+        <section class="mb-20">
+            <p class="text-gray-700 leading-relaxed text-lg mb-6">
+                YZ Design 是一家专注于极简工业风家具设计与制作的工作室。我们相信，真正的美源于简约与功能性的完美结合。
+            </p>
+            <p class="text-gray-700 leading-relaxed text-lg">
+                自2018年成立以来，我们始终坚持以客户需求为中心，通过创新设计和精湛工艺，为现代家庭和办公空间打造独特而实用的家具作品。
+            </p>
+        </section>
+        
+        <!-- 服务内容 -->
+        <section>
+            <h2 class="section-title">我们的服务</h2>
+            
+            <div class="space-y-12">
+                <!-- 服务项目1 -->
+                <div class="service-item">
+                    <h3 class="service-title">定制家具设计</h3>
+                    <p class="service-description">
+                        根据客户的空间需求和个人喜好，提供一对一的定制家具设计服务。从初步概念到最终方案，我们全程参与，确保每一件作品都完美契合客户的生活方式。
+                    </p>
+                </div>
+                
+                <!-- 服务项目2 -->
+                <div class="service-item">
+                    <h3 class="service-title">空间规划咨询</h3>
+                    <p class="service-description">
+                        提供专业的空间规划建议，帮助客户最大化利用现有空间。我们的设计师将根据空间特点、采光条件和使用需求，打造既美观又实用的生活环境。
+                    </p>
+                </div>
+                
+                <!-- 服务项目3 -->
+                <div class="service-item">
+                    <h3 class="service-title">家具制作与安装</h3>
+                    <p class="service-description">
+                        采用优质材料和传统工艺，精心制作每一件家具。我们的安装团队将确保家具安全、准确地安装到位，让客户无后顾之忧。
+                    </p>
+                </div>
+                
+                <!-- 服务项目4 -->
+                <div class="service-item">
+                    <h3 class="service-title">售后维护与保养</h3>
+                    <p class="service-description">
+                        提供全面的售后维护和保养服务，延长家具使用寿命。我们的专业团队随时为客户解答疑问，解决问题，确保客户长期满意。
+                    </p>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <!-- 页脚 -->
+    <footer class="py-6 mt-12">
+        <div class="container mx-auto px-[0.8vw]">
+            <!-- 左侧联系方式 -->
+            <div class="absolute left-[0.8vw] text-gray-500 text-sm">
+                <span>TEL:15555389170</span>
+            </div>
+            
+            <!-- 中间微信图标（居中） -->
+            <div class="relative flex justify-center">
+                <a href="#" id="wechatLink" class="text-gray-500 hover:text-gray-700 transition-colors">
+                    <i class="fa fa-weixin text-lg"></i>
+                </a>
+                <!-- 微信二维码弹窗 -->
+                <div id="wechatQRCode" class="absolute bottom-full mb-2 left-1/2 transform -translate-x-1/2 bg-white p-4 rounded-md shadow-lg opacity-0 pointer-events-none transition-opacity duration-300">
+                    <img src="https://p11-flow-imagex-download-sign.byteimg.com/tos-cn-i-a9rns2rl98/4185415812c14ef8be52b1f0a517b05b.jpg~tplv-a9rns2rl98-24:720:720.jpg?lk3s=8e244e95&amp;rcl=202603271052594264F06244B4CCF199D1&amp;rrcfp=8a172a1a&amp;x-expires=1775184780&amp;x-signature=sGvtgFgf9ufrXploVUTcSSpAJow%3D" alt="微信二维码" class="w-32 h-32 mb-2">
+                    <p class="text-center text-xs text-gray-500">扫码关注公众号</p>
+                </div>
+            </div>
+            
+            <!-- 右侧版权信息 -->
+            <div class="absolute right-[0.8vw] text-gray-500 text-sm">
+                © 2026 YZ Design. 保留所有权利。
+            </div>
+        </div>
+    </footer>
+    
+    <!-- 回到顶部按钮 -->
+    <button id="backToTop" class="fixed bottom-16 left-[0.8vw] text-gray-700 hover:text-gray-900 transition-colors duration-300 z-10">
+        <svg width="32" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 3L6 9" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"></path>
+            <path d="M12 3L18 9" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"></path>
+            <path d="M12 3V15" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"></path>
+        </svg>
+    </button>
+
+    <!-- 微信二维码浮窗 -->
+    <div id="wechatModal" class="fixed inset-0 flex items-center justify-center z-50 opacity-0 pointer-events-none transition-opacity duration-300">
+        <!-- 背景虚化效果 -->
+        <div class="absolute inset-0 bg-black bg-opacity-60"></div>
+        <!-- 二维码浮窗 -->
+        <div class="relative bg-white p-6 rounded-lg shadow-xl w-64">
+            <button id="closeWechatModal" class="absolute top-2 right-2 text-gray-500 hover:text-gray-700">
+                <i class="fa fa-times"></i>
+            </button>
+            <img src="https://p26-flow-imagex-download-sign.byteimg.com/tos-cn-i-a9rns2rl98/e76530c6202b473eaa331f2756d197fb.jpg~tplv-a9rns2rl98-24:720:720.jpg?lk3s=8e244e95&amp;rcl=20260327114909BD6144850A1EA22F4695&amp;rrcfp=8a172a1a&amp;x-expires=1775188149&amp;x-signature=kSs%2BUVmG3OnEwBsZlaj0aulcBCE%3D" alt="微信二维码" class="w-full h-auto mb-4">
+            <p class="text-center text-sm text-gray-600">扫码关注公众号</p>
+        </div>
+    </div>
+
+    <script>
+        // 等待DOM加载完成
+        document.addEventListener('DOMContentLoaded', function() {
+            // 获取DOM元素
+            const navbar = document.getElementById('navbar');
+            const navLinks = document.querySelectorAll('.nav-link');
+            const backToTopButton = document.getElementById('backToTop');
+            
+            // 导航链接点击事件
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    // 如果是外部链接或带有ID的链接，不阻止默认行为
+                    if (this.getAttribute('href') === '#' || this.getAttribute('id') === 'navWechatLink') {
+                        e.preventDefault();
+                    }
+                    
+                    // 移除所有链接的active类
+                    navLinks.forEach(item => item.classList.remove('active'));
+                    
+                    // 为当前点击的链接添加active类
+                    this.classList.add('active');
+                });
+            });
+
+            // 回到顶部按钮点击事件
+            backToTopButton.addEventListener('click', function() {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+
+            // 监听滚动事件，控制回到顶部按钮的显示/隐藏
+            window.addEventListener('scroll', function() {
+                if (window.pageYOffset > 300) {
+                    backToTopButton.classList.remove('opacity-0');
+                    backToTopButton.classList.add('opacity-100');
+                } else {
+                    backToTopButton.classList.remove('opacity-100');
+                    backToTopButton.classList.add('opacity-0');
+                }
+            });
+
+            // 初始化回到顶部按钮为隐藏状态
+            backToTopButton.classList.add('opacity-0', 'transition-opacity', 'duration-300');
+
+            // 微信图标交互
+            const wechatLink = document.getElementById('wechatLink');
+            const wechatQRCode = document.getElementById('wechatQRCode');
+            const navWechatLink = document.getElementById('navWechatLink');
+            const wechatModal = document.getElementById('wechatModal');
+            const closeWechatModal = document.getElementById('closeWechatModal');
+
+            // 显示微信二维码浮窗
+            function showWechatModal() {
+                // 显示模态框
+                wechatModal.classList.remove('opacity-0');
+                wechatModal.classList.add('opacity-100');
+                wechatModal.classList.remove('pointer-events-none');
+            }
+
+            // 隐藏微信二维码浮窗
+            function hideWechatModal() {
+                // 隐藏模态框
+                wechatModal.classList.remove('opacity-100');
+                wechatModal.classList.add('opacity-0');
+                wechatModal.classList.add('pointer-events-none');
+            }
+
+            // 导航栏微信图标点击事件
+            navWechatLink.addEventListener('click', function(e) {
+                e.preventDefault();
+                showWechatModal();
+            });
+
+            // 页脚微信图标点击事件
+            wechatLink.addEventListener('click', function(e) {
+                e.preventDefault();
+                showWechatModal();
+            });
+
+            // 关闭按钮点击事件
+            closeWechatModal.addEventListener('click', function() {
+                hideWechatModal();
+            });
+
+            // 点击浮窗背景关闭浮窗
+            wechatModal.addEventListener('click', function(e) {
+                if (e.target === wechatModal || e.target === wechatModal.firstElementChild) {
+                    hideWechatModal();
+                }
+            });
+
+            // 按ESC键关闭浮窗
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && !wechatModal.classList.contains('opacity-0')) {
+                    hideWechatModal();
+                }
+            });
+        });
+    </script>
+
+
+</body></html>

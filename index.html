@@ -1,0 +1,327 @@
+<html lang="zh-CN"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>极简导航栏</title>
+    <!-- Tailwind CSS v3 -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome -->
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#3b82f6'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif']
+                    },
+                    transitionProperty: {
+                        'height': 'height',
+                        'spacing': 'margin, padding'
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .nav-link {
+                @apply relative px-2 py-0 text-sm md:text-lg font-medium transition-colors duration-300 ease-in-out align-bottom;
+            }
+            
+            .nav-link::after {
+                content: '';
+                @apply absolute bottom-[-3px] left-0 w-0 h-[1px] bg-black transition-all duration-300 ease-in-out;
+            }
+            
+            .nav-link:hover::after {
+                @apply w-full;
+            }
+            
+
+            
+            .nav-link.active::after {
+                @apply w-full;
+            }
+            
+            .waterfall-container {
+                column-count: 1;
+                column-gap: 0.6vw;
+                @apply w-full;
+                padding-left: 0.8vw;
+                padding-right: 0.8vw;
+                margin-top: 40px;
+            }
+            @media (min-width: 768px) {
+                .waterfall-container {
+                    column-count: 3;
+                }
+            }
+            
+            .waterfall-item {
+                @apply overflow-hidden break-inside-avoid rounded-[3px];
+                margin-bottom: 0.6vw;
+            }
+            
+            .waterfall-item img {
+                @apply transition-all duration-300 ease-in-out;
+            }
+            
+            .waterfall-item img:hover {
+                filter: brightness(0.9);
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- 导航栏 -->
+    <nav id="navbar" class="fixed top-0 left-0 right-0 bg-white bg-opacity-100 h-10 z-50 overflow-hidden">
+        <div class="absolute left-0 right-0 px-[0.8vw] flex justify-between items-end h-[14px]" style="bottom: 2px;">
+            <!-- Logo/品牌 -->
+            <div>
+                <a href="#" style="display: inline-block;">
+                    <span class="text-xl font-bold text-gray-800" style="line-height: 14px; margin: 0; padding: 0;">YZ Design</span>
+                </a>
+            </div>
+            
+            <!-- 导航链接 -->
+            <div class="flex justify-between w-[60%]">
+                <a href="about.html" class="nav-link" data-target="about" style="line-height: 14px; font-size: 14px; margin: 0; padding: 0; transform: translateY(-2px);">关于</a>
+                <a href="#" class="nav-link" data-target="services" style="line-height: 14px; font-size: 14px; margin: 0; padding: 0; transform: translateY(-2px);">服务</a>
+                <a href="#" id="navWechatLink" class="nav-link" data-target="contact" style="line-height: 14px; font-size: 14px; margin: 0; padding: 0; transform: translateY(-2px);">
+                    <i class="fa fa-weixin"></i>
+                </a>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- 瀑布流 -->
+    <div class="waterfall-container">
+        <div class="waterfall-item" data-id="1">
+            <img src="https://p26-doubao-search-sign.byteimg.com/labis/8eecb87067cbc07efa03698580d3499c~tplv-be4g95zd3a-image.jpeg?lk3s=feb11e32&amp;x-expires=1790128117&amp;x-signature=7Ra7k%2BEX%2FM6Y4nc2ThBFRbNmR6M%3D" alt="极简工业风书桌" style="width: 100%; display: block; cursor: pointer;">
+        </div>
+        <div class="waterfall-item" data-id="2">
+            <img src="https://p3-doubao-search-sign.byteimg.com/labis/b81f6d4ae09f599a481acf1cee08863e~tplv-be4g95zd3a-image.jpeg?lk3s=feb11e32&amp;x-expires=1790128117&amp;x-signature=8e2upJcAuA3WvDIBVMIMzIyFjMI%3D" alt="工业风茶几组合" style="width: 100%; display: block; cursor: pointer;">
+        </div>
+        <div class="waterfall-item" data-id="3">
+            <img src="https://p26-doubao-search-sign.byteimg.com/labis/461f4f856da29d6bdf1d1395944f86de~tplv-be4g95zd3a-image.jpeg?lk3s=feb11e32&amp;x-expires=1790128117&amp;x-signature=ENMuPojY7Dmkpqm%2FQnZncSZq6Lw%3D" alt="工业风餐桌椅" style="width: 100%; display: block; cursor: pointer;">
+        </div>
+        <div class="waterfall-item" data-id="4">
+            <img src="https://p11-doubao-search-sign.byteimg.com/labis/b2a406179ad149da0841f9ccc2115667~tplv-be4g95zd3a-image.jpeg?lk3s=feb11e32&amp;x-expires=1790128117&amp;x-signature=cpBBiRkMK%2BqWKNZkQ0CazubtQ%2BE%3D" alt="意式极简餐桌椅" style="width: 100%; display: block; cursor: pointer;">
+        </div>
+        <div class="waterfall-item" data-id="5">
+            <img src="https://p3-doubao-search-sign.byteimg.com/labis/0c8831c66f6a3076f78a5fb7e35b2e29~tplv-be4g95zd3a-image.jpeg?lk3s=feb11e32&amp;x-expires=1790128125&amp;x-signature=dhjBpQZO8NXqHIf4gKBtFIFqkYo%3D" alt="极简工业风沙发" style="width: 100%; display: block; cursor: pointer;">
+        </div>
+        <div class="waterfall-item" data-id="6">
+            <img src="https://p3-doubao-search-sign.byteimg.com/labis/d1e85bc63a8ded987bb61efd4e8437db~tplv-be4g95zd3a-image.jpeg?lk3s=feb11e32&amp;x-expires=1790128125&amp;x-signature=zXtGKMb4YMDa6B48cwHAa6TPnAI%3D" alt="棕色极简沙发" style="width: 100%; display: block; cursor: pointer;">
+        </div>
+        <div class="waterfall-item" data-id="7">
+            <img src="https://p3-flow-imagex-sign.byteimg.com/tos-cn-i-a9rns2rl98/rc/pc/code_assistant/7579ffb0c45e4824b5bcfa71dbf9d6c3~tplv-a9rns2rl98-image.image?lk3s=8e244e95&amp;rcl=202603271338238DF483F304D33140AD3E&amp;rrcfp=e75484ac&amp;x-expires=1775194704&amp;x-signature=GAjRjM5HNBh1b9DAlwKJAJVme4Y%3D" alt="工业风真皮沙发" style="width: 100%; display: block; cursor: pointer;">
+        </div>
+        <div class="waterfall-item" data-id="8">
+            <img src="https://p3-doubao-search-sign.byteimg.com/labis/3b6b72d794b297495f632e499dc4ac6a~tplv-be4g95zd3a-image.jpeg?lk3s=feb11e32&amp;x-expires=1790128125&amp;x-signature=SA3ZX0Q3mlqzZRSbidKQexZ%2BYE8%3D" alt="意式极简皮沙发" style="width: 100%; display: block; cursor: pointer;">
+        </div>
+        <div class="waterfall-item" data-id="9">
+            <img src="https://p11-doubao-search-sign.byteimg.com/labis/ffa3fb07a7411f4efee60375955c344a~tplv-be4g95zd3a-image.jpeg?lk3s=feb11e32&amp;x-expires=1790128125&amp;x-signature=89EPaa7DBofl9IgJbFfIFpS3XLw%3D" alt="工业风铁艺衣柜" style="width: 100%; display: block; cursor: pointer;">
+        </div>
+        <div class="waterfall-item" data-id="10">
+            <img src="https://p26-doubao-search-sign.byteimg.com/labis/image/7a76d30c56d90c6ee9a9eff36ecba366~tplv-be4g95zd3a-image.jpeg?lk3s=feb11e32&amp;x-expires=1790128125&amp;x-signature=Bzg7%2Fl8dZLM90XTKwXgehPIjZXU%3D" alt="工业风集装箱柜子" style="width: 100%; display: block; cursor: pointer;">
+        </div>
+        <div class="waterfall-item" data-id="11">
+            <img src="https://p26-flow-imagex-sign.byteimg.com/tos-cn-i-a9rns2rl98/rc/pc/code_assistant/1751f1170378454ba08d137ab40356f5~tplv-a9rns2rl98-image.image?lk3s=8e244e95&amp;rcl=20260327095349265CB1A1E7F57E062561&amp;rrcfp=e75484ac&amp;x-expires=1775181230&amp;x-signature=x%2FvMOJ%2Bo4roGnQOkV%2F84K1NQgxw%3D" alt="极简铁艺电视柜" style="width: 100%; display: block; cursor: pointer;">
+        </div>
+        <div class="waterfall-item" data-id="12">
+            <img src="https://p26-flow-imagex-sign.byteimg.com/tos-cn-i-a9rns2rl98/rc/pc/code_assistant/f295443ca7f242b791ec7b0db906ed02~tplv-a9rns2rl98-image.image?lk3s=8e244e95&amp;rcl=20260327095126CA1C680A292806E42A56&amp;rrcfp=e75484ac&amp;x-expires=1775181088&amp;x-signature=jXxrV3JxEGbmAJylpnFkRGOhCQs%3D" alt="工业风白色铁皮柜" style="width: 100%; display: block; cursor: pointer;">
+        </div>
+        <div class="waterfall-item" data-id="13">
+            <img src="https://p3-doubao-search-sign.byteimg.com/labis/fd2654741d11e5f38be71fd638beaf9a~tplv-be4g95zd3a-image.jpeg?lk3s=feb11e32&amp;x-expires=1790128125&amp;x-signature=3EfXCkR5dE5OmG%2BNUzEKbCpfg6Q%3D" alt="工业风皮床" style="width: 100%; display: block; cursor: pointer;">
+        </div>
+        <div class="waterfall-item" data-id="14">
+            <img src="https://p11-doubao-search-sign.byteimg.com/labis/0736a08a2c70bc2358d1078efa8d40f2~tplv-be4g95zd3a-image.jpeg?lk3s=feb11e32&amp;x-expires=1790128125&amp;x-signature=%2F2XKkqpurKG8sVHKycC9eigfR6Y%3D" alt="意式极简皮床" style="width: 100%; display: block; cursor: pointer;">
+        </div>
+        <div class="waterfall-item" data-id="15">
+            <img src="https://p26-doubao-search-sign.byteimg.com/labis/808b149e7e54d17d94ce9495e9853827~tplv-be4g95zd3a-image.jpeg?lk3s=feb11e32&amp;x-expires=1790128125&amp;x-signature=79G86wLwZy9M558oQXc6w8nRmb8%3D" alt="北欧轻奢铁床" style="width: 100%; display: block; cursor: pointer;">
+        </div>
+        <div class="waterfall-item" data-id="16">
+            <img src="https://p26-doubao-search-sign.byteimg.com/labis/c5b2f3a0cc24a76277ed8e99a9f48457~tplv-be4g95zd3a-image.jpeg?lk3s=feb11e32&amp;x-expires=1790128125&amp;x-signature=7TyX14tCvCqswhcvD%2FWtQEiO%2FUI%3D" alt="北欧皮床" style="width: 100%; display: block; cursor: pointer;">
+        </div>
+    </div>
+    
+    <!-- 页脚 -->
+    <footer class="py-6 mt-12">
+        <div class="container mx-auto px-[0.8vw]">
+            <!-- 左侧联系方式 -->
+            <div class="absolute left-[0.8vw] text-gray-500 text-sm">
+                <span>TEL:15555389170</span>
+            </div>
+            
+            <!-- 中间微信图标（居中） -->
+            <div class="relative flex justify-center">
+                <a href="#" id="wechatLink" class="text-gray-500 hover:text-gray-700 transition-colors">
+                    <i class="fa fa-weixin text-lg"></i>
+                </a>
+                <!-- 微信二维码弹窗 -->
+                <div id="wechatQRCode" class="absolute bottom-full mb-2 left-1/2 transform -translate-x-1/2 bg-white p-4 rounded-md shadow-lg opacity-0 pointer-events-none transition-opacity duration-300">
+                    <img src="https://p11-flow-imagex-download-sign.byteimg.com/tos-cn-i-a9rns2rl98/4185415812c14ef8be52b1f0a517b05b.jpg~tplv-a9rns2rl98-24:720:720.jpg?lk3s=8e244e95&amp;rcl=202603271052594264F06244B4CCF199D1&amp;rrcfp=8a172a1a&amp;x-expires=1775184780&amp;x-signature=sGvtgFgf9ufrXploVUTcSSpAJow%3D" alt="微信二维码" class="w-32 h-32 mb-2">
+                    <p class="text-center text-xs text-gray-500">扫码关注公众号</p>
+                </div>
+            </div>
+            
+            <!-- 右侧版权信息 -->
+            <div class="absolute right-[0.8vw] text-gray-500 text-sm">
+                © 2026 YZ Design. 保留所有权利。
+            </div>
+        </div>
+    </footer>
+    
+    <!-- 回到顶部按钮 -->
+    <button id="backToTop" class="fixed bottom-16 left-[0.8vw] text-gray-700 hover:text-gray-900 transition-colors duration-300 z-10">
+        <svg width="32" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 3L6 9" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"></path>
+            <path d="M12 3L18 9" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"></path>
+            <path d="M12 3V15" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"></path>
+        </svg>
+    </button>
+
+    <!-- 微信二维码浮窗 -->
+    <div id="wechatModal" class="fixed inset-0 flex items-center justify-center z-50 opacity-0 pointer-events-none transition-opacity duration-300">
+        <!-- 背景虚化效果 -->
+        <div class="absolute inset-0 bg-black bg-opacity-60"></div>
+        <!-- 二维码浮窗 -->
+        <div class="relative bg-white p-6 rounded-lg shadow-xl w-64">
+            <button id="closeWechatModal" class="absolute top-2 right-2 text-gray-500 hover:text-gray-700">
+                <i class="fa fa-times"></i>
+            </button>
+            <img src="https://p26-flow-imagex-download-sign.byteimg.com/tos-cn-i-a9rns2rl98/e76530c6202b473eaa331f2756d197fb.jpg~tplv-a9rns2rl98-24:720:720.jpg?lk3s=8e244e95&amp;rcl=20260327114909BD6144850A1EA22F4695&amp;rrcfp=8a172a1a&amp;x-expires=1775188149&amp;x-signature=kSs%2BUVmG3OnEwBsZlaj0aulcBCE%3D" alt="微信二维码" class="w-full h-auto mb-4">
+            <p class="text-center text-sm text-gray-600">扫码关注公众号</p>
+        </div>
+    </div>
+
+    <script>
+        // 等待DOM加载完成
+        document.addEventListener('DOMContentLoaded', function() {
+            // 获取DOM元素
+            const navbar = document.getElementById('navbar');
+            const navLinks = document.querySelectorAll('.nav-link');
+            const waterfallItems = document.querySelectorAll('.waterfall-item');
+            const backToTopButton = document.getElementById('backToTop');
+            
+            // 导航链接点击事件
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    // 如果是"关于"链接，允许默认跳转行为
+                    if (this.getAttribute('href') === 'about.html') {
+                        // 移除所有链接的active类
+                        navLinks.forEach(item => item.classList.remove('active'));
+                        // 为当前点击的链接添加active类
+                        this.classList.add('active');
+                        // 不阻止默认跳转行为
+                        return;
+                    }
+                    
+                    // 对于其他链接，阻止默认跳转行为
+                    e.preventDefault();
+                    
+                    // 移除所有链接的active类
+                    navLinks.forEach(item => item.classList.remove('active'));
+                    
+                    // 为当前点击的链接添加active类
+                    this.classList.add('active');
+                    
+                    // 这里可以添加页面切换逻辑
+                    const target = this.getAttribute('data-target');
+                    console.log(`导航到: ${target}`);
+                });
+            });
+
+            // 瀑布流图片点击事件
+            waterfallItems.forEach(item => {
+                item.addEventListener('click', function() {
+                    const productId = this.getAttribute('data-id');
+                    // 跳转到产品详情页
+                    window.location.href = `product.html?id=${productId}`;
+                });
+            });
+
+            // 回到顶部按钮点击事件
+            backToTopButton.addEventListener('click', function() {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+
+            // 监听滚动事件，控制回到顶部按钮的显示/隐藏
+            window.addEventListener('scroll', function() {
+                if (window.pageYOffset > 300) {
+                    backToTopButton.classList.remove('opacity-0');
+                    backToTopButton.classList.add('opacity-100');
+                } else {
+                    backToTopButton.classList.remove('opacity-100');
+                    backToTopButton.classList.add('opacity-0');
+                }
+            });
+
+            // 初始化回到顶部按钮为隐藏状态
+            backToTopButton.classList.add('opacity-0', 'transition-opacity', 'duration-300');
+
+            // 微信图标交互
+            const wechatLink = document.getElementById('wechatLink');
+            const wechatQRCode = document.getElementById('wechatQRCode');
+            const navWechatLink = document.getElementById('navWechatLink');
+            const wechatModal = document.getElementById('wechatModal');
+            const closeWechatModal = document.getElementById('closeWechatModal');
+
+            // 显示微信二维码浮窗
+            function showWechatModal() {
+                // 显示模态框
+                wechatModal.classList.remove('opacity-0');
+                wechatModal.classList.add('opacity-100');
+                wechatModal.classList.remove('pointer-events-none');
+            }
+
+            // 隐藏微信二维码浮窗
+            function hideWechatModal() {
+                // 隐藏模态框
+                wechatModal.classList.remove('opacity-100');
+                wechatModal.classList.add('opacity-0');
+                wechatModal.classList.add('pointer-events-none');
+            }
+
+            // 导航栏微信图标点击事件
+            navWechatLink.addEventListener('click', function(e) {
+                e.preventDefault();
+                showWechatModal();
+            });
+
+            // 页脚微信图标点击事件
+            wechatLink.addEventListener('click', function(e) {
+                e.preventDefault();
+                showWechatModal();
+            });
+
+            // 关闭按钮点击事件
+            closeWechatModal.addEventListener('click', function() {
+                hideWechatModal();
+            });
+
+            // 点击浮窗背景关闭浮窗
+            wechatModal.addEventListener('click', function(e) {
+                if (e.target === wechatModal || e.target === wechatModal.firstElementChild) {
+                    hideWechatModal();
+                }
+            });
+
+            // 按ESC键关闭浮窗
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && !wechatModal.classList.contains('opacity-0')) {
+                    hideWechatModal();
+                }
+            });
+        });
+    </script>
+
+</body></html>
