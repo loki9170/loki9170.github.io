@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>产品详情 - 极简工业风家具</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome -->
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#000000',
+                        secondary: '#666666',
+                        background: '#f5f5f5',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .text-balance {
+                text-wrap: balance;
+            }
+        }
+    </style>
+    <style>
+        body {
+            font-family: 'Inter', system-ui, sans-serif;
+        }
+        .back-button {
+            transition: opacity 0.3s ease;
+        }
+        .back-button:hover {
+            opacity: 0.7;
+        }
+    </style>
+</head>
+<body class="bg-white">
+    <!-- 导航栏 -->
+    <nav class="fixed top-0 left-0 w-full h-10 bg-white bg-opacity-100 z-40 flex items-end px-[0.8vw]">
+        <div class="flex items-center justify-between w-full pb-1">
+            <!-- Logo -->
+            <div class="text-black text-lg font-bold">
+                <a href="index.html">LOGO</a>
+            </div>
+            <!-- 导航链接 -->
+            <div class="flex items-center space-x-8">
+                <a href="index.html" class="nav-link text-black text-sm pb-[2px] hover:border-b-2 hover:border-black transition-all duration-300">关于</a>
+                <a href="index.html" class="nav-link text-black text-sm pb-[2px] hover:border-b-2 hover:border-black transition-all duration-300">服务</a>
+                <a href="index.html" class="nav-link text-black text-sm pb-[2px] hover:border-b-2 hover:border-black transition-all duration-300">联系</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 产品详情内容 -->
+    <main class="pt-16 px-4 md:px-8 lg:px-16">
+        <!-- 返回按钮 -->
+        <div class="mb-8">
+            <a href="index.html" class="back-button inline-flex items-center text-sm text-gray-600">
+                <i class="fa fa-arrow-left mr-2"></i> 返回
+            </a>
+        </div>
+
+        <!-- 产品详情区域 -->
+        <div class="flex flex-col lg:flex-row">
+            <!-- 左侧产品图片 -->
+            <div class="lg:w-2/3 mb-8 lg:mb-0 lg:pr-8">
+                <div class="bg-gray-100 p-4 flex items-center justify-center">
+                    <img id="productImage" src="" alt="产品图片" class="max-w-full max-h-[70vh] object-contain">
+                </div>
+            </div>
+
+            <!-- 右侧产品信息 -->
+            <div class="lg:w-1/3">
+                <h1 id="productName" class="text-3xl font-bold mb-6"></h1>
+                <div class="text-sm text-gray-600 space-y-4 mb-8">
+                    <p id="productDescription" class="leading-relaxed"></p>
+                </div>
+                <div class="border-t border-gray-200 pt-6">
+                    <div id="productFeatures" class="space-y-3 mb-8"></div>
+                    <p id="productPrice" class="text-2xl font-bold text-black mb-8"></p>
+                    <div class="flex space-x-4">
+                        <button class="bg-black text-white px-8 py-3 rounded-lg hover:bg-gray-800 transition-colors">立即购买</button>
+                        <button class="border border-black px-8 py-3 rounded-lg hover:bg-gray-100 transition-colors">加入购物车</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // 产品数据
+        const products = {
+            1: {
+                name: "极简工业风书桌",
+                description: "采用优质钢材框架，搭配实木桌面，简约而不简单。桌面采用环保油漆处理，防水耐磨，适合各种工作环境。",
+                features: ["尺寸：140×70×75cm", "材质：冷轧钢+实木", "颜色：黑色+原木色", "承重：100kg"],
+                price: "¥1,299.00",
+                image: "https://p26-doubao-search-sign.byteimg.com/labis/8eecb87067cbc07efa03698580d3499c~tplv-be4g95zd3a-image.jpeg?lk3s=feb11e32&amp;x-expires=1790128117&amp;x-signature=7Ra7k%2BEX%2FM6Y4nc2ThBFRbNmR6M%3D"
+            },
+            2: {
+                name: "工业风茶几组合",
+                description: "由大小两个茶几组成，可灵活组合摆放。采用铁艺框架，搭配钢化玻璃桌面，现代感十足。",
+                features: ["尺寸：大60×60×45cm，小40×40×40cm", "材质：铁艺+钢化玻璃", "颜色：黑色", "承重：50kg/个"],
+                price: "¥899.00",
+                image: "https://p3-doubao-search-sign.byteimg.com/labis/b81f6d4ae09f599a481acf1cee08863e~tplv-be4g95zd3a-image.jpeg?lk3s=feb11e32&amp;x-expires=1790128117&amp;x-signature=8e2upJcAuA3WvDIBVMIMzIyFjMI%3D"
+            },
+            3: {
+                name: "工业风餐桌椅",
+                description: "餐桌采用铁艺框架搭配实木桌面，椅子采用皮革坐垫，舒适耐用。整体设计简约大方，适合现代家居。",
+                features: ["尺寸：餐桌160×80×75cm，椅子45×45×85cm", "材质：铁艺+实木+皮革", "颜色：黑色+原木色", "套装：1桌4椅"],
+                price: "¥2,599.00",
+                image: "https://p26-doubao-search-sign.byteimg.com/labis/461f4f856da29d6bdf1d1395944f86de~tplv-be4g95zd3a-image.jpeg?lk3s=feb11e32&amp;x-expires=1790128117&amp;x-signature=ENMuPojY7Dmkpqm%2FQnZncSZq6Lw%3D"
+            },
+            4: {
+                name: "意式极简餐桌椅",
+                description: "意式设计风格，简约优雅。餐桌采用岩板桌面，椅子采用布艺坐垫，舒适透气。",
+                features: ["尺寸：餐桌140×80×75cm，椅子45×45×85cm", "材质：岩板+实木+布艺", "颜色：白色+灰色", "套装：1桌4椅"],
+                price: "¥3,299.00",
+                image: "https://p11-doubao-search-sign.byteimg.com/labis/b2a406179ad149da0841f9ccc2115667~tplv-be4g95zd3a-image.jpeg?lk3s=feb11e32&amp;x-expires=1790128117&amp;x-signature=cpBBiRkMK%2BqWKNZkQ0CazubtQ%2BE%3D"
+            },
+            5: {
+                name: "极简工业风沙发",
+                description: "采用优质布艺面料，填充高密度海绵，坐感舒适。铁艺框架，稳固耐用。",
+                features: ["尺寸：三人位210×85×80cm", "材质：铁艺+布艺", "颜色：灰色", "填充物：高密度海绵"],
+                price: "¥1,899.00",
+                image: "https://p3-doubao-search-sign.byteimg.com/labis/0c8831c66f6a3076f78a5fb7e35b2e29~tplv-be4g95zd3a-image.jpeg?lk3s=feb11e32&amp;x-expires=1790128125&amp;x-signature=dhjBpQZO8NXqHIf4gKBtFIFqkYo%3D"
+            },
+            6: {
+                name: "棕色极简沙发",
+                description: "采用优质真皮面料，填充羽绒，坐感柔软舒适。简约设计，百搭各种家居风格。",
+                features: ["尺寸：三人位220×90×85cm", "材质：真皮+实木", "颜色：棕色", "填充物：羽绒"],
+                price: "¥3,599.00",
+                image: "https://p3-doubao-search-sign.byteimg.com/labis/d1e85bc63a8ded987bb61efd4e8437db~tplv-be4g95zd3a-image.jpeg?lk3s=feb11e32&amp;x-expires=1790128125&amp;x-signature=zXtGKMb4YMDa6B48cwHAa6TPnAI%3D"
+            },
+            7: {
+                name: "工业风真皮沙发",
+                description: "采用头层牛皮，质感细腻。铁艺框架，稳固耐用。简约设计，彰显品质生活。",
+                features: ["尺寸：三人位215×88×82cm", "材质：头层牛皮+铁艺", "颜色：深棕色", "填充物：高密度海绵"],
+                price: "¥4,299.00",
+                image: "https://p26-doubao-search-sign.byteimg.com/labis/08d92b7e80d3453d3d883f13e69d2342~tplv-be4g95zd3a-image.jpeg?lk3s=feb11e32&amp;x-expires=1790128125&amp;x-signature=sRK2elQzk7c23SaHmOqeBb%2BVE5c%3D"
+            },
+            8: {
+                name: "意式极简皮沙发",
+                description: "意式经典设计，采用进口牛皮，质感柔软。实木框架，稳固耐用。",
+                features: ["尺寸：三人位230×95×88cm", "材质：进口牛皮+实木", "颜色：米白色", "填充物：羽绒+海绵"],
+                price: "¥5,999.00",
+                image: "https://p3-doubao-search-sign.byteimg.com/labis/3b6b72d794b297495f632e499dc4ac6a~tplv-be4g95zd3a-image.jpeg?lk3s=feb11e32&amp;x-expires=1790128125&amp;x-signature=SA3ZX0Q3mlqzZRSbidKQexZ%2BYE8%3D"
+            },
+            9: {
+                name: "工业风铁艺衣柜",
+                description: "采用冷轧钢制作，坚固耐用。开放式设计，存取衣物方便。适合工业风装修风格。",
+                features: ["尺寸：120×50×200cm", "材质：冷轧钢", "颜色：黑色", "层数：4层"],
+                price: "¥1,599.00",
+                image: "https://p11-doubao-search-sign.byteimg.com/labis/ffa3fb07a7411f4efee60375955c344a~tplv-be4g95zd3a-image.jpeg?lk3s=feb11e32&amp;x-expires=1790128125&amp;x-signature=89EPaa7DBofl9IgJbFfIFpS3XLw%3D"
+            },
+            10: {
+                name: "工业风集装箱柜子",
+                description: "灵感来源于集装箱设计，采用冷轧钢制作，表面做旧处理，复古工业风十足。",
+                features: ["尺寸：80×60×100cm", "材质：冷轧钢", "颜色：复古做旧", "抽屉：3个"],
+                price: "¥1,299.00",
+                image: "https://p26-doubao-search-sign.byteimg.com/labis/image/7a76d30c56d90c6ee9a9eff36ecba366~tplv-be4g95zd3a-image.jpeg?lk3s=feb11e32&amp;x-expires=1790128125&amp;x-signature=Bzg7%2Fl8dZLM90XTKwXgehPIjZXU%3D"
+            },
+            11: {
+                name: "极简铁艺电视柜",
+                description: "简约设计，采用铁艺框架，搭配实木层板。适合各种尺寸的电视，实用性强。",
+                features: ["尺寸：180×40×45cm", "材质：铁艺+实木", "颜色：黑色+原木色", "层数：3层"],
+                price: "¥999.00",
+                image: "https://p26-flow-imagex-sign.byteimg.com/tos-cn-i-a9rns2rl98/rc/pc/code_assistant/1751f1170378454ba08d137ab40356f5~tplv-a9rns2rl98-image.image?lk3s=8e244e95&amp;rcl=20260327095349265CB1A1E7F57E062561&amp;rrcfp=e75484ac&amp;x-expires=1775181230&amp;x-signature=x%2FvMOJ%2Bo4roGnQOkV%2F84K1NQgxw%3D"
+            },
+            12: {
+                name: "工业风白色铁皮柜",
+                description: "采用优质冷轧钢制作，表面喷塑处理，防锈耐用。白色设计，简约现代。",
+                features: ["尺寸：90×40×180cm", "材质：冷轧钢", "颜色：白色", "门数：4门"],
+                price: "¥1,399.00",
+                image: "https://p26-flow-imagex-sign.byteimg.com/tos-cn-i-a9rns2rl98/rc/pc/code_assistant/f295443ca7f242b791ec7b0db906ed02~tplv-a9rns2rl98-image.image?lk3s=8e244e95&amp;rcl=20260327095126CA1C680A292806E42A56&amp;rrcfp=e75484ac&amp;x-expires=1775181088&amp;x-signature=jXxrV3JxEGbmAJylpnFkRGOhCQs%3D"
+            },
+            13: {
+                name: "工业风皮床",
+                description: "采用优质真皮面料，床头采用铁艺设计，工业风十足。实木床架，稳固耐用。",
+                features: ["尺寸：180×200cm", "材质：真皮+铁艺+实木", "颜色：深棕色", "结构：排骨架"],
+                price: "¥3,299.00",
+                image: "https://p3-doubao-search-sign.byteimg.com/labis/fd2654741d11e5f38be71fd638beaf9a~tplv-be4g95zd3a-image.jpeg?lk3s=feb11e32&amp;x-expires=1790128125&amp;x-signature=3EfXCkR5dE5OmG%2BNUzEKbCpfg6Q%3D"
+            },
+            14: {
+                name: "意式极简皮床",
+                description: "意式简约设计，采用进口牛皮，质感柔软。床头采用软包设计，舒适靠卧。",
+                features: ["尺寸：180×200cm", "材质：进口牛皮+实木", "颜色：米白色", "结构：排骨架"],
+                price: "¥4,599.00",
+                image: "https://p11-doubao-search-sign.byteimg.com/labis/0736a08a2c70bc2358d1078efa8d40f2~tplv-be4g95zd3a-image.jpeg?lk3s=feb11e32&amp;x-expires=1790128125&amp;x-signature=%2F2XKkqpurKG8sVHKycC9eigfR6Y%3D"
+            },
+            15: {
+                name: "北欧轻奢铁床",
+                description: "北欧设计风格，采用铁艺框架，表面电镀处理，轻奢感十足。简约设计，百搭各种家居风格。",
+                features: ["尺寸：180×200cm", "材质：铁艺", "颜色：金色", "结构：排骨架"],
+                price: "¥1,899.00",
+                image: "https://p26-doubao-search-sign.byteimg.com/labis/808b149e7e54d17d94ce9495e9853827~tplv-be4g95zd3a-image.jpeg?lk3s=feb11e32&amp;x-expires=1790128125&amp;x-signature=79G86wLwZy9M558oQXc6w8nRmb8%3D"
+            },
+            16: {
+                name: "北欧皮床",
+                description: "北欧简约设计，采用优质皮革，质感细腻。实木框架，稳固耐用。",
+                features: ["尺寸：180×200cm", "材质：皮革+实木", "颜色：浅灰色", "结构：排骨架"],
+                price: "¥2,999.00",
+                image: "https://p26-doubao-search-sign.byteimg.com/labis/c5b2f3a0cc24a76277ed8e99a9f48457~tplv-be4g95zd3a-image.jpeg?lk3s=feb11e32&amp;x-expires=1790128125&amp;x-signature=7TyX14tCvCqswhcvD%2FWtQEiO%2FUI%3D"
+            }
+        };
+
+        // 获取URL参数中的产品ID
+        function getProductId() {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get('id');
+        }
+
+        // 加载产品详情
+        function loadProductDetails() {
+            const productId = getProductId();
+            const product = products[productId];
+            
+            if (product) {
+                // 设置页面标题
+                document.title = `${product.name} - 极简工业风家具`;
+                
+                // 填充产品信息
+                document.getElementById('productName').textContent = product.name;
+                document.getElementById('productDescription').textContent = product.description;
+                document.getElementById('productPrice').textContent = product.price;
+                document.getElementById('productImage').src = product.image;
+                document.getElementById('productImage').alt = product.name;
+                
+                // 填充产品参数
+                const featuresContainer = document.getElementById('productFeatures');
+                featuresContainer.innerHTML = '';
+                product.features.forEach(feature => {
+                    const featureElement = document.createElement('p');
+                    featureElement.className = 'flex items-start';
+                    featureElement.innerHTML = `<span class="mr-2">•</span> ${feature}`;
+                    featuresContainer.appendChild(featureElement);
+                });
+            } else {
+                // 如果产品不存在，显示错误信息
+                document.querySelector('main').innerHTML = `
+                    <div class="text-center py-16">
+                        <h1 class="text-2xl font-bold mb-4">产品不存在</h1>
+                        <a href="index.html" class="text-black hover:underline">返回首页</a>
+                    </div>
+                `;
+            }
+        }
+
+        // 页面加载完成后执行
+        document.addEventListener('DOMContentLoaded', loadProductDetails);
+    </script>
+</body>
+</html>
